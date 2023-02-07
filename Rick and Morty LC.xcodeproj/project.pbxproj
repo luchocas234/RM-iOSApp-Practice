@@ -14,6 +14,9 @@
 		4D5EF4272991315800C8680F /* RMCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF4262991315800C8680F /* RMCharacterViewController.swift */; };
 		4D5EF4292991316E00C8680F /* RMEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF4282991316E00C8680F /* RMEpisodeViewController.swift */; };
 		4D5EF42B2991318200C8680F /* RMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF42A2991318200C8680F /* RMSettingsViewController.swift */; };
+		4D5EF42D2992C73800C8680F /* RMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF42C2992C73800C8680F /* RMService.swift */; };
+		4D5EF42F2992C74C00C8680F /* RMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF42E2992C74C00C8680F /* RMRequest.swift */; };
+		4D5EF4312992C75B00C8680F /* RMEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EF4302992C75B00C8680F /* RMEndpoint.swift */; };
 		4DB1CF28298DA53E001E4713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1CF27298DA53E001E4713 /* AppDelegate.swift */; };
 		4DB1CF2A298DA53E001E4713 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1CF29298DA53E001E4713 /* SceneDelegate.swift */; };
 		4DB1CF2C298DA53E001E4713 /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB1CF2B298DA53E001E4713 /* RMTabBarController.swift */; };
@@ -29,6 +32,9 @@
 		4D5EF4262991315800C8680F /* RMCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewController.swift; sourceTree = "<group>"; };
 		4D5EF4282991316E00C8680F /* RMEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisodeViewController.swift; sourceTree = "<group>"; };
 		4D5EF42A2991318200C8680F /* RMSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSettingsViewController.swift; sourceTree = "<group>"; };
+		4D5EF42C2992C73800C8680F /* RMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMService.swift; sourceTree = "<group>"; };
+		4D5EF42E2992C74C00C8680F /* RMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRequest.swift; sourceTree = "<group>"; };
+		4D5EF4302992C75B00C8680F /* RMEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEndpoint.swift; sourceTree = "<group>"; };
 		4DB1CF24298DA53E001E4713 /* Rick and Morty LC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick and Morty LC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB1CF27298DA53E001E4713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DB1CF29298DA53E001E4713 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 		4D5EF41B29912B4600C8680F /* ApiClient */ = {
 			isa = PBXGroup;
 			children = (
+				4D5EF42C2992C73800C8680F /* RMService.swift */,
+				4D5EF42E2992C74C00C8680F /* RMRequest.swift */,
+				4D5EF4302992C75B00C8680F /* RMEndpoint.swift */,
 			);
 			path = ApiClient;
 			sourceTree = "<group>";
@@ -218,8 +227,11 @@
 				4DB1CF28298DA53E001E4713 /* AppDelegate.swift in Sources */,
 				4DB1CF2A298DA53E001E4713 /* SceneDelegate.swift in Sources */,
 				4D5EF42B2991318200C8680F /* RMSettingsViewController.swift in Sources */,
+				4D5EF42D2992C73800C8680F /* RMService.swift in Sources */,
 				4D5EF4272991315800C8680F /* RMCharacterViewController.swift in Sources */,
+				4D5EF4312992C75B00C8680F /* RMEndpoint.swift in Sources */,
 				4D5EF41F2991312900C8680F /* RMLocation.swift in Sources */,
+				4D5EF42F2992C74C00C8680F /* RMRequest.swift in Sources */,
 				4D5EF4212991313200C8680F /* RMCharacter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
