@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Foundation
 ///  View that handles showing characters, loaders, etc.
 final class CharacterListView: UIView {
     
@@ -20,13 +20,15 @@ final class CharacterListView: UIView {
     }()
     
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+       
         collectionView.isHidden = true
         collectionView.alpha = 0
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
         return collectionView
     }()
@@ -37,7 +39,8 @@ final class CharacterListView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubviews(collectionView, spinner)
+        addSubviews(collectionView,spinner)
+       
         addConstraints()
         spinner.startAnimating()
         viewModel.fetchCharacters()
@@ -56,15 +59,17 @@ final class CharacterListView: UIView {
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         
         ])
     }
     
     private func setUpCollectionView(){
+        
         collectionView.dataSource = viewModel
+        collectionView.delegate = viewModel
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
             self.spinner.stopAnimating()

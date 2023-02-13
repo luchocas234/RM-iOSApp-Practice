@@ -8,9 +8,9 @@
 import Foundation
 
 struct RMGetAllCharactersResponse: Codable{
-    struct Info:Codable{
-        let count : Int
-        let page : Int
+    struct Info: Codable{
+        let count : Int?
+        let page : Int?
         let next : String?
         let prev: String?
     }
