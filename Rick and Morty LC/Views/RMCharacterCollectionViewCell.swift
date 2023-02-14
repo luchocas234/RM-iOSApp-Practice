@@ -13,7 +13,8 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -39,10 +40,19 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubviews(imageView, nameLabel, statusLabel)
         addConstraints()
+        setUpLayer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpLayer(){
+        contentView.layer.cornerRadius = 10
+        contentView.layer.shadowColor = UIColor.label.cgColor
+        contentView.layer.cornerRadius = 4
+        contentView.layer.shadowOffset = CGSize(width: -4, height: 4)
+        contentView.layer.shadowOpacity = 0.3
     }
     
     private func addConstraints(){
@@ -63,9 +73,9 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -3)
         ])
-//        imageView.backgroundColor = .systemCyan
-//        nameLabel.backgroundColor = .red
-//        statusLabel.backgroundColor = .orange
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setUpLayer()
     }
     
     override func prepareForReuse() {
@@ -73,11 +83,13 @@ final class RMCharacterCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
         nameLabel.text = nil
         statusLabel.text = nil
+        
     }
     
     public func configure(with viewModel: RMCharacterCollectionViewCellViewModel){
         nameLabel.text = viewModel.characterName
         statusLabel.text = viewModel.characterStatusText
+        imageView.layer.cornerRadius = 10
         viewModel.fetchImage{
             [weak self] result in
             switch result {

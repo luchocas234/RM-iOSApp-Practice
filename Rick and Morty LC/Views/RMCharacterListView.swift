@@ -42,6 +42,7 @@ final class RMCharacterListView: UIView {
         addSubviews(collectionView,spinner)
        
         addConstraints()
+        
         spinner.startAnimating()
         viewModel.delegate = self
         viewModel.fetchCharacters()
