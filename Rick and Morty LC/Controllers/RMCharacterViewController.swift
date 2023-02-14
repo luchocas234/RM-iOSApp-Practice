@@ -11,7 +11,7 @@ import UIKit
 /// Controller to show and search Characters
 final class RMCharacterViewController: UIViewController {
 
-    private let characterListView = CharacterListView()
+    private let characterListView = RMCharacterListView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,9 +8,9 @@
 import UIKit
 import Foundation
 ///  View that handles showing characters, loaders, etc.
-final class CharacterListView: UIView {
+final class RMCharacterListView: UIView {
     
-    private let viewModel = CharacterListViewViewModel()
+    private let viewModel = RMCharacterListViewViewModel()
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
@@ -24,7 +24,7 @@ final class CharacterListView: UIView {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        collectionView.register(RMCharacterCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterCollectionViewCell.cellIdentifier)
        
         collectionView.isHidden = true
         collectionView.alpha = 0
@@ -43,6 +43,7 @@ final class CharacterListView: UIView {
        
         addConstraints()
         spinner.startAnimating()
+        viewModel.delegate = self
         viewModel.fetchCharacters()
         setUpCollectionView()
     }
@@ -71,16 +72,19 @@ final class CharacterListView: UIView {
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
-            self.spinner.stopAnimating()
-            
-            self.collectionView.isHidden = false
-        
-            UIView.animate(withDuration: 0.4){
-                self.collectionView.alpha = 1
-            }
-        })
     }
     
 
+}
+
+extension RMCharacterListView: RMCharacterListViewViewModelDelegate {
+    func didLoadInitialCharacters() {
+        collectionView.reloadData() // Initial fetch characters
+        
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        UIView.animate(withDuration: 0.4){
+            self.collectionView.alpha = 1
+        }
+    }
 }
